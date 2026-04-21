@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS users (
 ''')
 conn.commit()
 
-key = Fernet.generate_key()
+key = b'your-fixed-secret-key-here'
 cipher = Fernet(key)
 
 def encrypt_data(data):
