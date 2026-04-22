@@ -71,7 +71,21 @@ def login():
 @app.route('/')
 def home():
     return "Secure Cloud API Running ✅"        
-    
+
+@app.route('/users', methods=['GET'])
+def get_users():
+    cursor.execute("SELECT id, email FROM users")
+    users = cursor.fetchall()
+
+    user_list = []
+    for user in users:
+        user_list.append({
+            "id": user[0],
+            "email": user[1]
+        })
+
+    return jsonify(user_list)
+
 import os
 port = int(os.environ.get("PORT", 5000))
 app.run(host='0.0.0.0', port=port)
