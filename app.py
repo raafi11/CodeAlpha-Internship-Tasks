@@ -67,6 +67,10 @@ def login():
             return jsonify({"message": "Wrong password ❌"})
     else:
         return jsonify({"message": "User not found ❌"})
+
+@app.route('/')
+def home():
+    return "Secure Cloud API Running ✅"        
     
 import os
 port = int(os.environ.get("PORT", 5000))
